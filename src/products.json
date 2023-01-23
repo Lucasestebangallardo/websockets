@@ -1,0 +1,93 @@
+{
+    "products": [
+      {
+        "id": 0,
+        "title": "Placa de video",
+        "description": "Placa de video nvidia 3060",
+        "code": "BL405",
+        "price": "75000",
+        "status": true,
+        "stock": "10",
+        "category": "placa de video",
+        "thumbnail": "sin imagen"
+      },
+      {
+        "id": 1,
+        "title": "Placa de video",
+        "description": "Placa de video nvidia 2060",
+        "code": "MC303",
+        "price": "70000",
+        "status": true,
+        "stock": "15",
+        "category": "placa de video",
+        "thumbnail": "sin imagen"
+      },
+      {
+        "id": 2,
+        "title": "Placa de video",
+        "description": "Placa de video nvidia 2080",
+        "code": "ENG402",
+        "price": "18000",
+        "status": true,
+        "stock": "20",
+        "category": "placa de video",
+        "thumbnail": "sin imagen"
+      },
+      {
+        "id": 3,
+        "title": "Placa de video",
+        "description": "Placa de video nvidia 3080",
+        "code": "V866",
+        "price": "110000",
+        "status": "true",
+        "stock": "100",
+        "category": "placa de video",
+        "thumbnail": "sin imagen"
+      },
+      {
+        "id": 4,
+        "title": "Placa de video",
+        "description": "Placa de video nvidia 1050ti",
+        "code": "VT755",
+        "price": "15000",
+        "status": "true",
+        "stock": "150",
+        "category": "placa de video",
+        "thumbnail": "sin imagen"
+      },
+      {
+        "id": 5,
+        "title": "Placa de video",
+        "description": "Placa de video nvidia 1080ti",
+        "code": "CL325",
+        "price": "50000",
+        "status": "true",
+        "stock": "200",
+        "category": "placa de video",
+        "thumbnail": "sin imagen"
+      },
+      {
+        "id": 6,
+        "title": "Placa de video",
+        "description": "Placa de video nvidia 3060ti",
+        "code": "GB5",
+        "price": "1200",
+        "status": "true",
+        "stock": "90000",
+        "category": "placa de video",
+        "thumbnail": "sin imagen"
+      },
+      {
+        "id": 7,
+        "title": "Placa de video",
+        "description": "Placa de video nvidia 1650",
+        "code": "GA65",
+        "price": "2200",
+        "status": "true",
+        "stock": "60000",
+        "category": "placa de video",
+        "thumbnail":"sin imagen"
+      }
+    ]
+  }
+  
