@@ -1,8 +1,7 @@
-const cartManager = require('../cartmanager');
-const ProductManager = require('../productmanager');
-
-const cart = new cartManager(__dirname + '/../cart.json');
-const pm = new ProductManager('./src/products.json');
+const ProductManager = require("../dao/fsManager/ProductManager");
+const CartManager = require('../dao/fsManager/CartManager')
+const Product = new ProductManager('./assets/product.json');
+const Carts = new CartManager(__dirname + '/../../assets/carts.json');
 
 const createcart = async (req, res) => {
   const resp = await cart.CreateFile();

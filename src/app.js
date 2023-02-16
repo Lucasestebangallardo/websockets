@@ -1,48 +1,52 @@
-const express = require ('express');
-const {Server} = require('socket.io');
-const handlebars = require ('express-handlebars');
-const viewsroute = require  ('./routes/views.route')
-const productsroute = require ('./routes/products.route')
-const cartsroute = require ('./routes/cart.route')
-const {connectionSocket} = require ('./utils/socket.io')
-const server = express();
 
-const httpServer = server.listen(8080, ()=>{
-    console.log('el servidor esta corriendo en el puerto 8080')
+const express = require('express');
+const {Server} = require('socket.io');
+const {connectionSocket} = require('./utils/soket.io')
+const handlebars = require('express-handlebars');
+const productsRoute = require('./routes/products.routes');
+const cardsRoute = require ('./routes/carts.routes')
+const productsRouteBd = require('./routes/products.router.bd')
+const cartsRouteBd = require('./routes/carts.router.bd')
+const viewRoute = require('./routes/views.route')
+const chatsRouter = require('./routes/chats.router')
+const server = express();
+const mongoose = require('mongoose');
+const productModel = require('./dao/models/products.model');
+
+mongoose.set('strictQuery', false)
+
+
+
+const httpServer = server.listen(8080, ()=> {
+    console.log('Servidor Listo en puerto 8080')
+    
 })
 
-// Handlebars 
-
+//handlerbars
 server.engine('handlebars', handlebars.engine());
 server.set('views', __dirname + '/views');
 server.set('view engine', 'handlebars');
-
-//Express
-
+//express
 server.use(express.static(__dirname+'/public'));
 server.use(express.json())
 server.use(express.urlencoded({extended:true}))
+//rutas
 
-//Rutas 
-server.use('/api/products/',productsroute);
-
-//Rutas del cart
-server.use('/api/carts/',cartsroute);
-
-// Rutas del views
-server.use('/',viewsroute)
-
-//handlebar
-server.engine ('handlebars', handlebars.engine());
-
-
-server.set('views',__dirname +'/views');
-server.set('view engine', 'handlebars');
-
-server.use(express.static(__dirname +'/public'));
-
-server.use('/',viewsroute);
+server.use("/api/products/", productsRoute);
+server.use("/api/carts/", cardsRoute);
+server.use("/", viewRoute);
+server.use("/api/productsBd/", productsRouteBd );
+server.use("/api/cartsBd/", cartsRouteBd );
+server.use("/api/chats/", chatsRouter );
 
 
 
-connectionSocket(httpServer);
+
+const test = async ()=>{
+    await mongoose.connect('mongodb+srv://LucasGallardo:<password>@codercluster.jbsak8c.mongodb.net/?retryWrites=true&w=majority',
+   );
+   console.log("Su conexion a la base fue exitosa")
+  
+  }
+  test();
+  connectionSocket (httpServer);

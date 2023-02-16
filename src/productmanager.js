@@ -1,4 +1,4 @@
-// import fs, { readFile } from 'fs';
+/* // import fs, { readFile } from 'fs';
 const fs = require ("fs");
 const { parse } = require("path");
 
@@ -103,4 +103,4 @@ class ProductManager {
     }
   }
 }
-module.exports = ProductManager;
+module.exports = ProductManager; */

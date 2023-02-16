@@ -1,4 +1,4 @@
-const fs = require('fs');
+/* const fs = require('fs');
 
 const writeFile = async (path, cart) => {
   fs.promises.writeFile(path, JSON.stringify(cart));
@@ -54,4 +54,4 @@ class cartManager {
 
 }
 
-module.exports = cartManager;
+module.exports = cartManager; */

@@ -1,11 +1,14 @@
-const{Router} = require ('express');
-const cartcontroller = require ('../controller/cart.controller');
-const router = Router();
+const {Router} = require('express');
+const cartsController = require('../controller/carts.controller')
 
 
-router.post ('/',cartcontroller.createcart);
-router.get ('/:cid',cartcontroller.getchango)
-router.post ('/:cid/products/:pid',cartcontroller.addProductCart)
+const router =  Router();
+
+router.post("/", cartsController.createCarts)
+router.get('/:cid', cartsController.getCarts)
+router.get('/:cid', cartsController.getCarts)
+router.post('/:cid/products/:pid', cartsController.addProductToCart);
+
 
 
 module.exports = router;

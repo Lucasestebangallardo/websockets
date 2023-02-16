@@ -1,64 +1,77 @@
-const { response } = require("express");
-const  ProductManager = require ("../productmanager");
-const pm = new ProductManager('./src/products.json');
+const ProductManager = require("../dao/fsManager/ProductManager");
+const Product = new ProductManager('./assets/product.json');
 
-
-const getProducts = async (req,res)=>{
-    const {limite:limite = ""} = req.query
-    if (!limite){
-        let productos = await pm.getProducts();
-        res.json(productos)
+const getProducts = async (req, res) => {
+  const {limit: limite = ""} = req.query;
+  if (!limite) {
+    let productos = await Product.getProducts();
+    if (productos.length == 0){
+      res.json({msg:"No Hay Productos"});
     }else{
-        let productos = await pm.getProducts(limite);
-        res.json(productos)
+      res.json(productos);
     }
+  } else{
+    let productos = await Product.getProducts(limite);
+     res.json(productos);
+
+  }
 };
 
-const ProductsbyId = async (req,res)=>{
-    const id = req.params.pid 
-    let producto = await pm.getProductsById(id);
-    if (!producto){
-        res.status(producto.status).send(producto)
+
+
+const getProductId = async (req , res)=>{
+  const pid = req.params.pid
+  let product = await Product.getProductById(pid);
+   if (!product){
+      res.json("product no encontrado")    
+   } else{
+       res.json(product)  
+ 
+
+   }
+}   
+
+const addProduct = async (req , res)=>{
+    const body = req.body;
+    const add = await Product.addProduct(body);
+    if (add.erro){
+      res.json(add)
     }else{
-        res.json(producto)
+      res.json(add);
     }
+
 }
 
-const addProduct = async (req,res)=>{
+const  UpdateProduct = async (req, res)=>{
+    const id = +req.params.pid  
     const body = req.body
-    const products = await pm.addProduct(body);
-    if(products.error){
-        res.status(products.status).send(products)
+    const update = await Product.UpdateProduct(id, body);
+    if (update){
+      res.json(update)
     }else{
-        res.json(products)
+      res.json(update);
     }
+
 }
 
-const updateProducts = async (req,res)=>{
-    const body = req.body
-    const id = +req.params.pid
-    const update = await pm.updateProducts(id,body);
-    if(update.error){
-        res.status(update.status).send(update)
-    } else {
-        res.json(update)
-    }
+const deleteProduct = async (req, res)=>{
+  const id = +req.params.pid 
+  const Delete = await Product.deleteProduct (id);
+  if (Delete.erro){
+    res.json(Delete);
+  }else{
+    res.json(Delete);
+  }
+
 }
 
-const deleteProduct = async (req,res)=>{
-    const id = req.params.pid 
-    let eliminado = await pm.deleteProduct(parseInt(id));
-    if(eliminado.error){
-        res.status(eliminado.status).send(eliminado)
-    } else {
-        res.json(eliminado)
-    }
-}
 
 module.exports = {
-    getProducts,
-    ProductsbyId,
-    addProduct,
-    updateProducts,
-    deleteProduct
-}
+  getProducts,
+  getProductId,
+  addProduct,
+  UpdateProduct,
+  deleteProduct
+};
+
+
