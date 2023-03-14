@@ -43,7 +43,7 @@ server.use("/api/chats/", chatsRouter );
 
 
 const test = async ()=>{
-    await mongoose.connect('mongodb+srv://LucasGallardo:<password>@codercluster.jbsak8c.mongodb.net/?retryWrites=true&w=majority',
+    await mongoose.connect('mongodb+srv://LucasGallardo:Legl42785793@codercluster.jbsak8c.mongodb.net/?retryWrites=true&w=majority',
    );
    console.log("Su conexion a la base fue exitosa")
   
